@@ -7,4 +7,5 @@ Python3<br>
 PySimpleGUI<br>
 <br>
 Povijest verzija:<br>
-Verzija 1: osnovno preračunavanje i izračuna razlike u eurima
+Verzija 2: Dodana mogućnost da se cijena u EUR preračuna u HRK<br>
+Verzija 1: Osnovno preračunavanje i izračuna razlike u eurima
