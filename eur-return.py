@@ -7,8 +7,11 @@ import PySimpleGUI as sg
 
 sg.theme ("DarkGrey5") #tema
 
-layout = [  [sg.Text("Cijena EUR"), sg.InputText(size=(6,1), key='eur')], #unos cijene u eurima
-            [sg.Button ("HRK"), sg.Text("", text_color='red', key='kn')], #preračunavanje cijene u kune
+layout = [  [sg.Text("Iznos"), sg.InputText(size=(6,1), key='izn')],
+            [sg.Button("EUR to HRK")], 
+            [sg.Button("HRK to EUR")],
+            [sg.Text("", text_color='yellow', key='izncon')],
+            [sg.Text("Cijena EUR"), sg.InputText(size=(6,1), key='eur')], #unos cijene u eurima
             [sg.Text("Plaćeno HRK"), sg.InputText(size=(6,1), key='hrk')], #unos plaćenog u kunama
             [sg.Text("Za vratiti", text_color='yellow', key='back')], #mjesto za ispis izračuna
             [sg.Button("IZRAČUNAJ")], 
@@ -26,13 +29,20 @@ while True:
         window['eur'].update('')
         window['hrk'].update('')
         window['back'].update('Za vratiti')
-        window['kn'].update('')
-    elif event == "HRK":
-        eur = values['eur'] #cijena u eur
+        window['izn'].update('')
+        window['izncon'].update('')
+    elif event == "EUR to HRK":
+        hrk = values['izn'] #iznso u hrk
+        hrkf = float(hrk.replace(',','.')) #float hrk
+        eur = round(hrkf * 7.53450,2)
+        eurp = str(eur) + " HRK"
+        window['izncon'].update(eurp)
+    elif event == "HRK to EUR":
+        eur = values['izn'] #cijena u eur
         eurf = float(eur.replace(',','.')) #float eur
-        kn = round(eurf * 7.53450,2)
-        knp = str(kn) + " HRK"
-        window['kn'].update(knp)
+        kn = round(eurf / 7.53450,2)
+        knp = str(kn) + " EUR"
+        window['izncon'].update(knp)
     elif event == "IZRAČUNAJ":
         eur = values['eur'] #cijena
         eurf = float(eur.replace(',','.')) #float eur
@@ -45,5 +55,6 @@ while True:
         razp = "Za vratiti " + str(raz) + " EUR"
         window['back'].update(razp)
 
+#verzija 3: preračunavanje iz kuna u euro i obratno u gornjem dijelu prozora
 #verzija 2: dodana mogućnost da se cijena u EUR preračuna u HRK
 #verzija 1: osnovno preračunavanje i izračuna razlike u eurima
