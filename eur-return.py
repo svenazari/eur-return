@@ -67,6 +67,8 @@ while True:
                 razz = raz * -1
                 razzkn = round(razz * 7.53450,2)
                 razp = "Fali " + str(razzkn) + " HRK (" + str(razz) + " EUR)"
+            else:
+                razp = "Iznos je točan."
             window['back'].update(razp)
 
 #verzija 4: skripta više ne pokazuje minus ako je iznos u kunama manji od potrebnog u eurima, već javlja koliko kuna (eura) fali
