@@ -62,7 +62,7 @@ while True:
             hrk2eur = round(hrkf / rate,2) #pretvaranje kuna u euro
             raz = round(hrk2eur - eurf,2) #računanje razlike
             if raz > 0:
-                razp = "Za vratiti " + str(raz) + " EUR"
+                razp = "Za vratiti: " + str(raz) + " EUR"
             elif raz < 0:
                 razz = raz * -1
                 razzkn = round(razz * 7.53450,2)
