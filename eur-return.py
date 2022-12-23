@@ -17,14 +17,14 @@ layout = [  [sg.Text("Iznos"), sg.InputText(size=(6,1), key='izn')],
             [sg.Text("", text_color='yellow', key='back')], #mjesto za ispis izračuna
             [sg.Button("IZRAČUNAJ")], 
             [sg.Button("NOVO")], 
-            [sg.Button("EXIT")]
+            [sg.Button("IZLAZ")]
     ]
 
 window = sg.Window("EUR RETURN", layout)
 
 while True:
     event, values = window.read()
-    if event == sg.WIN_CLOSED or event == "EXIT":
+    if event == sg.WIN_CLOSED or event == "IZLAZ":
         break
     elif event == "NOVO":
         window['eur'].update('')
